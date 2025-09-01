@@ -1,0 +1,58 @@
+# --- Secrets ---
+# NEVER commit your secret keys or environment variables.
+# The .env.example file is tracked, but the actual .env file is ignored.
+*.env
+**/.env
+
+# --- Python ---
+# Virtual environments
+# If you create a virtual environment in the root or any subdirectory
+venv/
+env/
+*/venv/
+*/env/
+.venv
+
+# Python cache files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Build and distribution artifacts
+build/
+dist/
+*.egg-info/
+sdist/
+wheelhouse/
+*.egg
+*.whl
+
+# Pytest and coverage reports (good practice for the future)
+.pytest_cache/
+.coverage
+.tox/
+htmlcov/
+
+# --- IDE / Editor ---
+# Visual Studio Code
+.vscode/
+
+# --- Docker ---
+# You generally don't need to ignore Docker-related files unless you
+# have local-only compose overrides or context files.
+# docker-compose.override.yml
+
+# --- Generated Media ---
+# Ignore any files the application might download or create, like cover art.
+# This prevents them from being committed to the repository.
+*.jpg
+*.jpeg
+*.png
+
+# --- Operating System Files ---
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db

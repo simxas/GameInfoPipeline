@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Database - Home</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+            margin: 1rem;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 0.5rem;
+            color: #2c3e50;
+            font-size: 2rem;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #7f8c8d;
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #555;
+        }
+
+        input[type="text"],
+        select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e1e8ed;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+            background-color: #f8f9fa;
+        }
+
+        input[type="text"]:focus,
+        select:focus {
+            outline: none;
+            border-color: #667eea;
+            background-color: white;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
+        .required {
+            color: #e74c3c;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎮 Game Database</h1>
+        <p class="subtitle">Add your favorite games to our collection</p>
+        
+            
+<form id="gameForm" action="/input" method="POST">
+    <div class="form-group">
+        <label for="gameName">Game Name <span class="required">*</span></label>
+        <input type="text" id="gameName" name="gameName" placeholder="Enter game name..." required>
+    </div>
+    
+    <div class="form-group">
+        <label for="platform">Platform <span class="required">*</span></label>
+        <select id="platform" name="platform" required>
+            <option value="">Select a platform...</option>
+            
+            <!-- Modern Platforms -->
+            <optgroup label="🎮 Modern Platforms">
+                <option value="PC">PC</option>
+                <option value="PlayStation 5">PlayStation 5</option>
+                <option value="PlayStation 4">PlayStation 4</option>
+                <option value="Xbox Series S/X">Xbox Series S/X</option>
+                <option value="Xbox One">Xbox One</option>
+                <option value="Nintendo Switch">Nintendo Switch</option>
+                <option value="iOS">iOS</option>
+                <option value="Android">Android</option>
+                <option value="macOS">macOS</option>
+                <option value="Linux">Linux</option>
+            </optgroup>
+            
+            <!-- Nintendo Consoles -->
+            <optgroup label="🎯 Nintendo Consoles">
+                <option value="NES">Nintendo Entertainment System (NES)</option>
+                <option value="SNES">Super Nintendo (SNES)</option>
+                <option value="Nintendo 64">Nintendo 64</option>
+                <option value="GameCube">GameCube</option>
+                <option value="Wii">Wii</option>
+                <option value="Wii U">Wii U</option>
+            </optgroup>
+            
+            <!-- Nintendo Handhelds -->
+            <optgroup label="🕹️ Nintendo Handhelds">
+                <option value="Game Boy">Game Boy</option>
+                <option value="Game Boy Color">Game Boy Color</option>
+                <option value="Game Boy Advance">Game Boy Advance</option>
+                <option value="Nintendo DS">Nintendo DS</option>
+                <option value="Nintendo DSi">Nintendo DSi</option>
+                <option value="Nintendo 3DS">Nintendo 3DS</option>
+            </optgroup>
+            
+            <!-- PlayStation -->
+            <optgroup label="🎮 PlayStation">
+                <option value="PlayStation">PlayStation</option>
+                <option value="PlayStation 2">PlayStation 2</option>
+                <option value="PlayStation 3">PlayStation 3</option>
+                <option value="PSP">PSP</option>
+                <option value="PS Vita">PS Vita</option>
+            </optgroup>
+            
+            <!-- Xbox -->
+            <optgroup label="🎮 Xbox">
+                <option value="Xbox">Xbox</option>
+                <option value="Xbox 360">Xbox 360</option>
+            </optgroup>
+            
+            <!-- SEGA -->
+            <optgroup label="🔵 SEGA">
+                <option value="Genesis">Sega Genesis</option>
+                <option value="SEGA Saturn">SEGA Saturn</option>
+                <option value="Dreamcast">Dreamcast</option>
+                <option value="SEGA CD">SEGA CD</option>
+                <option value="SEGA 32X">SEGA 32X</option>
+                <option value="SEGA Master System">SEGA Master System</option>
+                <option value="Game Gear">Game Gear</option>
+            </optgroup>
+            
+            <!-- Atari -->
+            <optgroup label="🕹️ Atari">
+                <option value="Atari 2600">Atari 2600</option>
+                <option value="Atari 5200">Atari 5200</option>
+                <option value="Atari 7800">Atari 7800</option>
+                <option value="Atari 8-bit">Atari 8-bit</option>
+                <option value="Atari ST">Atari ST</option>
+                <option value="Atari Lynx">Atari Lynx</option>
+                <option value="Atari XEGS">Atari XEGS</option>
+                <option value="Atari Flashback">Atari Flashback</option>
+            </optgroup>
+            
+            <!-- Classic Computers -->
+            <optgroup label="💻 Classic Computers">
+                <option value="Classic Macintosh">Classic Macintosh</option>
+                <option value="Apple II">Apple II</option>
+                <option value="Commodore / Amiga">Commodore / Amiga</option>
+            </optgroup>
+            
+            <!-- Other Retro -->
+            <optgroup label="🎲 Other Retro">
+                <option value="Neo Geo">Neo Geo</option>
+                <option value="3DO">3DO</option>
+                <option value="Jaguar">Jaguar</option>
+            </optgroup>
+            
+            <option value="Other">Other</option>
+        </select>
+    </div>
+    
+    <button type="submit" class="submit-btn">Game info</button>
+</form>
+    </div>
+
+    <!-- <script>
+        document.getElementById('gameForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const gameName = document.getElementById('gameName').value;
+            const platform = document.getElementById('platform').value;
+            
+            if (gameName && platform) {
+                alert(`Game "${gameName}" for ${platform} has been submitted successfully!`);
+                // Here you would typically send the data to a server
+                // For now, we'll just clear the form
+                this.reset();
+            }
+        });
+    </script> -->
+</body>
+</html>

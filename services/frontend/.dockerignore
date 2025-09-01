@@ -1,0 +1,19 @@
+# Ignore the Python virtual environment
+venv
+.venv
+
+# Ignore Python cache files
+__pycache__/
+*.pyc
+
+# Ignore local user files
+.vscode/
+.idea/
+
+# Ignore git related files
+.git
+.gitignore
+README.md
+
+# Ignore secrets files
+.env

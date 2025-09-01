@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ game_name }} - Game Database</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+        }
+
+        .container {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 800px;
+            overflow: hidden;
+            margin: 1rem;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .header .subtitle {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .content {
+            padding: 2rem;
+        }
+
+        .game-info {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .game-cover {
+            text-align: center;
+        }
+
+        .game-cover img {
+            width: 100%;
+            max-width: 300px;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .game-cover img:hover {
+            transform: scale(1.05);
+        }
+
+        .cover-placeholder {
+            width: 100%;
+            max-width: 300px;
+            height: 400px;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #6c757d;
+            font-size: 3rem;
+            margin: 0 auto;
+        }
+
+        .game-details {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .detail-item {
+            margin-bottom: 1.5rem;
+        }
+
+        .detail-label {
+            font-weight: 600;
+            color: #555;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .detail-value {
+            font-size: 1.2rem;
+            color: #2c3e50;
+            font-weight: 500;
+        }
+
+        .platform-tag {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .review-section {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 2px solid #e1e8ed;
+        }
+
+        .review-title {
+            font-size: 1.5rem;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .review-text {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: #555;
+            text-align: justify;
+            background-color: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+        }
+
+        .back-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            padding: 12px 24px;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: transform 0.2s ease;
+            margin-top: 2rem;
+        }
+
+        .back-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .back-button:active {
+            transform: translateY(0);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .container {
+                margin: 0.5rem;
+            }
+
+            .header {
+                padding: 1.5rem;
+            }
+
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .content {
+                padding: 1.5rem;
+            }
+
+            .game-info {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .game-cover {
+                order: -1;
+            }
+
+            .game-cover img,
+            .cover-placeholder {
+                max-width: 250px;
+            }
+
+            .cover-placeholder {
+                height: 300px;
+                font-size: 2rem;
+            }
+
+            .detail-value {
+                font-size: 1.1rem;
+            }
+
+            .review-text {
+                font-size: 1rem;
+                padding: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header h1 {
+                font-size: 1.5rem;
+            }
+
+            .header .subtitle {
+                font-size: 1rem;
+            }
+
+            .game-cover img,
+            .cover-placeholder {
+                max-width: 200px;
+            }
+
+            .cover-placeholder {
+                height: 250px;
+                font-size: 1.5rem;
+            }
+        }
+
+        /* Loading state for images */
+        .game-cover img {
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .game-cover img.loaded {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎮 {{ game_name }}</h1>
+            <p class="subtitle">Game Information</p>
+        </div>
+        
+        <div class="content">
+            <div class="game-info">
+                <div class="game-cover">
+                    {% if game_cover_art %}
+                        <img src="{{ game_cover_art }}" alt="{{ game_name }} Cover Art" 
+                             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                             onload="this.classList.add('loaded')">
+                    {% endif %}
+                    <div class="cover-placeholder" {% if game_cover_art %}style="display: none;"{% endif %}>
+                        🎮
+                    </div>
+                </div>
+                
+                <div class="game-details">
+                    <div class="detail-item">
+                        <span class="detail-label">Game Title</span>
+                        <div class="detail-value">{{ game_name }}</div>
+                    </div>
+                    
+                    <div class="detail-item">
+                        <span class="detail-label">Platform</span>
+                        <div class="detail-value">
+                            <span class="platform-tag">{{ platform }}</span>
+                        </div>
+                    </div>
+                    
+                    {% if release_date %}
+                    <div class="detail-item">
+                        <span class="detail-label">Release Date</span>
+                        <div class="detail-value">{{ release_date }}</div>
+                    </div>
+                    {% endif %}
+                    
+                    {% if rating %}
+                    <div class="detail-item">
+                        <span class="detail-label">Rating</span>
+                        <div class="detail-value">{{ rating }}/10</div>
+                    </div>
+                    {% endif %}
+                    
+                </div>
+            </div>
+            
+            {% if review_text %}
+            <div class="review-section">
+                <h2 class="review-title">📝 Review</h2>
+                <div class="review-text">
+                    {{ review_text }}
+                </div>
+            </div>
+            {% endif %}
+            
+            <a href="/" class="back-button">← Back to Home</a>
+        </div>
+    </div>
+
+    <script>
+        // Handle image loading
+        document.addEventListener('DOMContentLoaded', function() {
+            const images = document.querySelectorAll('.game-cover img');
+            images.forEach(img => {
+                if (img.complete) {
+                    img.classList.add('loaded');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

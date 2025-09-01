@@ -1,0 +1,18 @@
+# prometheus/prometheus.yml
+
+global:
+  scrape_interval: 15s
+
+scrape_configs:
+  # The job name is added as a label `job=<job_name>` to any timeseries scraped from this config.
+
+  - job_name: "backend-service"
+    # Docker Compose provides DNS resolution.
+    # Prometheus can find FastAPI app using its service name 'backend-service'.
+    static_configs:
+      - targets: ["backend-service:8000"]
+
+  - job_name: "frontend-service"
+    # Similarly, Prometheus can find Flask app using its service name 'frontend-service'.
+    static_configs:
+      - targets: ["frontend-service:5000"]
