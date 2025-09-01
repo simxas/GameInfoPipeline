@@ -83,9 +83,9 @@ This project uses `.env` files to handle secrets and configuration. You'll need 
 
 *   **Docker Compose Configuration (IMPORTANT!):**
     *   Create one more `.env` file in the main project root: `touch .env`
-    *   Open this new `.env` file and add the following line, replacing the path with the **absolute path** to the folder on your computer where you will store your AI models:
+    *   Open this new .env file and add the following line exactly as it is:
     ```
-    MODEL_PATH=/home/your-user/path/to/your/models
+    MODEL_PATH=./models
     ```
 
 ### 3. Place Your AI Model
